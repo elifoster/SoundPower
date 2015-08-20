@@ -2,6 +2,7 @@ package santa.soundpower.tile;
 
 import cofh.api.energy.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import santa.soundpower.Config;
 
@@ -78,11 +79,11 @@ public class TileNoiseFluxer extends TileEnergyHandler implements IEnergyConnect
         tile.receiveEnergy(energy, false);
     }
 
-    public static int[] getCoordinates() {
-        int xCoord = new TileNoiseFluxer().xCoord;
-        int yCoord = new TileNoiseFluxer().yCoord;
-        int zCoord = new TileNoiseFluxer().zCoord;
-        int[] coords = {xCoord, yCoord, zCoord};
+    public int[] getCoordinates() {
+        int[] coords = {
+          xCoord, yCoord, zCoord
+        };
+
         return coords;
     }
 }

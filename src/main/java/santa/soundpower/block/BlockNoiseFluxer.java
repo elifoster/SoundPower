@@ -26,7 +26,11 @@ public class BlockNoiseFluxer extends Block {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-        System.out.println(String.format("This Noise Fluxer has %d power.", TileNoiseFluxer.storage.getEnergyStored()));
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if (tile != null && tile instanceof TileNoiseFluxer) {
+            TileNoiseFluxer fluxer = (TileNoiseFluxer) world.getTileEntity(x, y, z);
+            System.out.println(String.format("This Noise Fluxer has %d power.", fluxer.storage.getEnergyStored()));
+        }
         return false;
     }
 }
