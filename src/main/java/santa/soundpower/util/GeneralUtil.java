@@ -1,6 +1,6 @@
 package santa.soundpower.util;
 
-public class MathUtil {
+public class GeneralUtil {
 
     /**
      * @param min Minimum range

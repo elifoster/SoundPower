@@ -1,6 +1,7 @@
 package santa.soundpower.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -8,9 +9,9 @@ import net.minecraft.world.World;
 import santa.soundpower.SoundPower;
 import santa.soundpower.tile.TileNoiseFluxer;
 
-public class BlockNoiseFluxer extends Block {
+public class BlockNoiseFluxer extends Block implements ITileEntityProvider {
 
-    public BlockNoiseFluxer(Material mat) {
+    public BlockNoiseFluxer() {
         super(Material.iron);
         this.setCreativeTab(SoundPower.tab);
         this.setBlockTextureName("minecraft:jukebox");
@@ -20,7 +21,7 @@ public class BlockNoiseFluxer extends Block {
     }
 
     @Override
-    public TileEntity createTileEntity(World world, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta) {
         return new TileNoiseFluxer();
     }
 
@@ -31,6 +32,6 @@ public class BlockNoiseFluxer extends Block {
             TileNoiseFluxer fluxer = (TileNoiseFluxer) world.getTileEntity(x, y, z);
             System.out.println(String.format("This Noise Fluxer has %d power.", fluxer.storage.getEnergyStored()));
         }
-        return false;
+        return true;
     }
 }
