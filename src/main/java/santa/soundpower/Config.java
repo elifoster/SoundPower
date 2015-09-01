@@ -15,16 +15,16 @@ public class Config {
 
     public static void load(FMLPreInitializationEvent event) {
         File configurationDir = ReflectionHelper.getPrivateValue(FMLPreInitializationEvent.class, event, 2);
-        File oldConfigFile = new File(configurationDir, "Steamcraft.cfg");
+        File oldConfigFile = new File(configurationDir, "SoundPower.cfg");
         if (oldConfigFile.exists()) {
             try {
-                FileUtils.copyFile(new File(configurationDir, "Steamcraft.cfg"), new File(configurationDir, "FlaxbeardsSteamPower.cfg"));
+                FileUtils.copyFile(new File(configurationDir, "SoundPower.cfg"), new File(configurationDir, "SoundPower.cfg"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             oldConfigFile.delete();
         }
-        Configuration config = new Configuration(new File(configurationDir, "FlaxbeardsSteamPower.cfg"));
+        Configuration config = new Configuration(new File(configurationDir, "SoundPower.cfg"));
         config.load();
 
         noisefluxerStorage = config.get("Tweaking", "Amount of RF that the Noise Fluxer can hold", 32000).getInt(32000);
